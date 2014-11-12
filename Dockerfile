@@ -33,7 +33,7 @@ RUN cat Development/FreeStep/ssl/freestep_net.crt > /Development/FreeStep/ssl/CO
 
 RUN cd /Development/FreeStep && npm install
 RUN cd /Development/FreeStep && bower --allow-root install
-RUN cd /Development/FreeStep && sudo npm start
+#RUN cd /Development/FreeStep && sudo npm start
 
 EXPOSE 80:80
 EXPOSE 443:443
