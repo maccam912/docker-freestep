@@ -23,17 +23,17 @@ RUN npm install -g bower grunt-cli
 
 # RUN curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 
-RUN cd /Development && git clone https://github.com/jkingsman/FreeStep.git
+RUN cd /Development && git clone https://github.com/maccam912/FreeStep.git
 
 RUN mkdir /Development/FreeStep/ssl/
 RUN openssl genrsa -out /Development/FreeStep/ssl/server.key 1024
-RUN openssl req -new -key /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.csr -subj "/C=US/ST=WI/L=Wausau/O=freestep/OU=IT Department/CN=localhost"
+RUN openssl req -new -key /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.csr -subj "/C=US/ST=WI/L=Wausau/O=freestep/OU=IT Department/CN=libertymutual.pw"
 RUN yes . | openssl x509 -req -days 365 -in /Development/FreeStep/ssl/freestep_net.csr -signkey /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.crt
 RUN cat Development/FreeStep/ssl/freestep_net.crt > /Development/FreeStep/ssl/COMODO.ca-bundle
 
 RUN cd /Development/FreeStep && npm install
 RUN cd /Development/FreeStep && bower --allow-root install
-#RUN cd /Development/FreeStep && sudo npm start
+CMD ["cd /Development/FreeStep","sudo npm start"]
 
 EXPOSE 80:80
 EXPOSE 443:443
