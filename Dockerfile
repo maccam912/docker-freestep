@@ -26,7 +26,7 @@ RUN npm install -g bower grunt-cli
 RUN cd /Development && git clone https://github.com/jkingsman/FreeStep.git
 
 RUN mkdir /Development/FreeStep/ssl/
-RUN openssl genrsa -des3 -out /Development/FreeStep/ssl/server.key 1024
+RUN openssl genrsa -out /Development/FreeStep/ssl/server.key 1024
 
 RUN cd /Development/FreeStep && npm install
 RUN cd /Development/FreeStep && bower --allow-root install
