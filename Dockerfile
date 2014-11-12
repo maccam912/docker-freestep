@@ -20,12 +20,14 @@ RUN rm -rf /Development/node
 RUN chmod 777 -R /Development
 
 RUN npm install -g bower grunt-cli
+RUN openssl genrsa -des3 -out /Development/FreeStep/ssl/server.key 1024
 
 # RUN curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 
 RUN cd /Development && git clone https://github.com/jkingsman/FreeStep.git
 
 RUN cd /Development/FreeStep && npm install
+RUN cd /Development/FreeStep && bower --allow-root install
 RUN cd /Development/FreeStep && sudo npm start
 
 EXPOSE 80:80
