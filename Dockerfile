@@ -27,8 +27,8 @@ RUN cd /Development && git clone https://github.com/jkingsman/FreeStep.git
 
 RUN mkdir /Development/FreeStep/ssl/
 RUN openssl genrsa -out /Development/FreeStep/ssl/server.key 1024
-RUN yes en | openssl req -new -key /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.csr
-RUN yes | openssl x509 -req -days 365 -in /Development/FreeStep/ssl/freestep_net.csr -signkey /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.crt
+RUN yes . | openssl req -new -key /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.csr
+RUN yes . | openssl x509 -req -days 365 -in /Development/FreeStep/ssl/freestep_net.csr -signkey /Development/FreeStep/ssl/server.key -out /Development/FreeStep/ssl/freestep_net.crt
 
 RUN cd /Development/FreeStep && npm install
 RUN cd /Development/FreeStep && bower --allow-root install
